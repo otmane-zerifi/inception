@@ -1,9 +1,7 @@
 FROM debian:11
 
 RUN apt-get update && \
-    apt-get install -y mariadb-server sudo && \
-    sudo chown -R mysql:mysql /var/lib/mysql && \
-    sudo chmod -R 755 /var/lib/mysql
+    apt-get install -y mariadb-server 
 
 COPY ./server.cnf /etc/mysql/mariadb.conf.d
 
