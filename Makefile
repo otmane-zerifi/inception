@@ -1,16 +1,12 @@
-RUN = docker-compose up  --build
+all:
+	docker compose -f ./srcs/docker-compose.yml up  --build
 
-CLEAN = docker-compose down  --rmi all
+bonus:
+	docker compose -f ./srcs/requirements/bonus/docker-compose.yml up -d --build
 
-CLEAN_ALL = docker system prune -af ; clear;
-
-all :
-	cd srcs && $(RUN)
-
-down:
-	cd srcs && $(CLEAN)
-
-clean:
-	cd srcs && $(CLEAN_ALL)
-
-re : down all
+fclean:
+	-docker stop $$(docker ps -a -q)
+	-docker rm $$(docker ps -a -q)
+	-docker rmi $$(docker images -a -q)
+	-docker network rm $$(docker network ls -q) 2> /dev/null
+	-docker volume rm $$(docker volume ls -q)

@@ -17,10 +17,10 @@ RUN sed -i "s#listen = /run/php/php7.4-fpm.sock#listen = wordpress:9000#g" /etc/
 
 RUN mkdir /run/php
 
-COPY ./sc.sh /
+COPY ./tools/sc.sh /
 
 EXPOSE 9000
 
 RUN chmod +x /sc.sh
 
-CMD ["/sc.sh"]
+CMD ["./sc.sh"]

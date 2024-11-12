@@ -20,7 +20,7 @@ services:
   
   adminer:
     build:
-      context: ./requirements/adminer/
+      context: ./requirements/bonus/adminer/
     image: adminer:1
     container_name: adminer
     env_file:

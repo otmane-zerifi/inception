@@ -3,9 +3,9 @@ FROM debian:11
 RUN apt-get update && \
     apt-get install -y mariadb-server 
 
-COPY ./server.cnf /etc/mysql/mariadb.conf.d
+COPY ./conf/server.cnf /etc/mysql/mariadb.conf.d
 
-COPY ./sc.sh ./sc.sh
+COPY ./tools/sc.sh ./sc.sh
 
 RUN chmod +x ./sc.sh
 
